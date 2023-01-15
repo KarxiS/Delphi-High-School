@@ -1,0 +1,5 @@
+26 je vacsie ako 4 s poradim 1
+26 je vacsie ako 4 s poradim 2
+95 je vacsie ako 4 s poradim 3
+63 je vacsie ako 4 s poradim 4
+sucet tychto cisel je 210

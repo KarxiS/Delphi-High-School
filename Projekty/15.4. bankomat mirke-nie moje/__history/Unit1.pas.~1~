@@ -1,0 +1,88 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Edit1: TEdit;
+    Memo1: TMemo;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+
+    procedure jednotky(cislo:string);
+    procedure desiatky(cislo:string);
+    procedure stovky(cislo:string);
+
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+cislo,stovka:string;
+I,II:integer;
+begin
+
+for I := length(cislo) downto 1 do
+ begin
+    case I of
+    1: jednotky(cislo[I]);
+    2: desiatky(cislo[I])
+    else
+       for II := 1 to length(cislo)-I do
+       begin
+        stovka:=stovka+cislo[II];
+
+       stovky(stovka);
+       end;
+    end;
+
+ end;
+
+
+
+end;
+
+procedure tform1.jednotky(cislo: string);
+  var
+  jedno,dvoj,pat,zvysok:integer;
+  cisloint:integer;
+  begin
+  cisloint:=strtoint(cislo);
+  pat:=cisloint div 5;
+  zvysok:=cisloint mod 5;
+  dvoj:=zvysok div 2;
+  zvysok := zvysok mod 2;
+  jedno:=zvysok;
+  memo1.Lines.Add('patiek je '+inttostr(pat));
+  memo1.Lines.Add('dvojek je '+inttostr(dvoj));
+  memo1.Lines.Add('jednotiek je '+inttostr(jedno));
+
+
+
+  end;
+
+procedure tform1.desiatky(cislo: string);
+begin
+
+end;
+
+procedure tform1.stovky(cislo: string);
+begin
+
+end;
+end.

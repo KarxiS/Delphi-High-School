@@ -1,0 +1,182 @@
+unit Main;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, System.ImageList,
+  Vcl.ImgList, Vcl.Samples.Spin, Vcl.ExtCtrls;
+
+type
+
+  TForm2 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Label1: TLabel;
+    Memo1: TMemo;
+    ImageList1: TImageList;
+    Button4: TButton;
+    SpinEdit1: TSpinEdit;
+    Label2: TLabel;
+    Panel1: TPanel;
+    Button5: TButton;
+    Label3: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+
+
+
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+
+  end;
+
+
+
+var
+  Form2: TForm2;
+
+
+
+
+implementation
+
+{$R *.dfm}
+uses udaje,zapis,unit3;
+
+
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+
+if ZapisOsoby then
+    label1.Caption := 'pocet ziakov:' + Inttostr(pocitadlo-pocetschovanych);
+    button3.Click;
+
+end;
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+label1.Caption:='pocet ziakov:0';
+memo1.Clear;
+pocitadlo:=0;
+pocetschovanych:=0;
+end;
+        //main.form2.Label1.Caption:='pocet ziakov:'+Inttostr(pocitadlo-pocetschovanych);
+procedure TForm2.Button3Click(Sender: TObject);
+
+function fdatum(den,mesiac:byte;rok:integer):string;
+begin
+  result:='Narodenie:  '+Inttostr(den)+'.'+Inttostr(mesiac)+'.'+Inttostr(rok);
+end;
+
+function fpohlavie(poh:ppohlavie):string;
+begin
+  case poh of
+    pMuz: result:='muz' ;
+    pZena: result:='zena' ;
+  end;
+  result:= 'Pohlavie: '+result;
+end;
+
+function fnarodnost(naro: pnarodnost):string;
+begin
+  case naro of  //Ukraina,Slovensko,Cesko,Japonsko,ine
+   Americka: result:='Americka';
+   Slovenska: result:='Slovensko';
+   Ceska: result:='Cesko';
+   Japonska: result:='Japonsko';
+   ine: result:='ine';
+  end;
+   result:= 'narodnost: '+result ;
+end;
+
+ var
+ i,rad:integer;
+
+begin
+memo1.clear;
+rad:=0;
+     for I := 1 to pocitadlo do
+     with zoznamziakov[i] do
+     begin
+     //if zoznamziakov[i].schovat then memo1.Lines.Add('schovat yes');  //test
+     if zoznamziakov[i].schovat then continue;
+
+
+
+
+      rad:=rad+1;
+      memo1.lines.Add(InttoStr(Rad)+'. ziak');  //vypis kolkaty ziak
+      memo1.lines.Add('kodove oznacenie na upravu: '+Inttostr(i));
+      memo1.lines.Add('meno a priezvisko: '+Meno.Meno+' '+Meno.Priezvisko);  //meno
+      memo1.lines.Add(fdatum(DatumNar.Den, DatumNar.Mesiac, DatumNar.Rok));  //datumnar
+      memo1.Lines.Add(fnarodnost(narodnost)) ;
+      memo1.lines.Add(fpohlavie(pohlavie));
+      //memo1.Lines.Add('Narodnost: '+ fnarodnost(narodnost));//narodnost
+
+      memo1.lines.Add('');
+        end;
+
+
+
+end;
+
+
+procedure TForm2.Button4Click(Sender: TObject);
+
+begin
+if (zoznamziakov[spinedit1.Value].schovat) or (zoznamziakov[spinedit1.Value].Meno.meno='') then
+  begin
+Messagedlg('Tento ziak neexistuje', mtError, [mbOk], 0);
+  exit;
+  end;
+
+  zoznamziakov[spinedit1.Value].schovat:=true;    //naschval ostavaju zapisany, len su schovany
+  pocetschovanych:=pocetschovanych+1 ;
+  label1.Caption:='pocet ziakov:'+Inttostr(pocitadlo-pocetschovanych);
+ button3.Click;
+end;
+
+procedure TForm2.Button5Click(Sender: TObject);
+
+begin
+  with form3,zoznamziakov[form2.SpinEdit1.value] do
+  begin
+
+ show;
+
+
+ edit1.Text:= Meno.meno;
+edit2.Text:= Meno.priezvisko;
+spinedit1.Value:=datumnar.den;
+spinedit2.Value:=datumnar.mesiac;
+spinedit3.Value:=datumnar.rok;
+    case pohlavie of
+pmuz: radiogroup1.ItemIndex:=0;
+pzena:radiogroup1.ItemIndex:=1;
+    end;
+
+
+
+
+form3.ComboBox1.ItemIndex:=ord(narodnost);
+ uprava:=form2.SpinEdit1.Value;
+
+
+
+ end;
+
+
+
+
+end;
+
+
+end.

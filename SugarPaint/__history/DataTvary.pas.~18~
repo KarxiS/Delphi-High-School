@@ -1,0 +1,567 @@
+unit DataTvary;
+
+interface
+
+uses
+  Classes, Graphics, types,system.sysutils,pointin;
+
+type
+  TDruhTvaru = (tvNeurceny, tvObdlznik, tvElipsa, tvTrojuholnik, tvKriz, tvSipka);
+
+  TTvar = class(TObject)
+  private
+    FDruhTvaru: TDruhTvaru;
+    FFarba: TColor;
+    FVlavo:integer;
+    fsirka:integer;
+    fhore:integer;
+    fvyska:integer;
+    ffarbaciary:tcolor;
+    fhrubkaciary:integer;
+    fnazov:string;
+    fzobrazit:boolean;
+
+
+  protected
+   function getnazov:string;virtual;
+
+  public
+    constructor Create(druh:tdruhtvaru);
+    procedure ulozitdata(suborStream:tfilestream);virtual;
+    procedure nacitatdata(suborStream:tfilestream);virtual;
+    procedure Nakreslit(ACanvas: TCanvas); virtual;
+    property DruhTvaru: TDruhTvaru read FDruhTvaru write FDRUHTvaru;
+    property Farba: TColor read ffarba write ffarba;
+    property FarbaCiary: TColor read ffarbaciary write ffarbaciary ;
+    property Hore: Integer read FHore write FHore;
+    property HrubkaCiary: integer read fhrubkaciary write fhrubkaciary;
+    property Nazov: String read getnazov write fnazov;
+    property Sirka: Integer read FSirka write FSirka;
+    property Vlavo: Integer read FVlavo write FVlavo;
+    property Vyska: Integer read FVyska write FVyska;
+    property Zobrazit: Boolean read fzobrazit write fzobrazit;
+    function BodVTvare(p:tpoint):boolean;virtual;abstract;
+  end;
+
+  TObdlznik = class(TTvar)
+  private
+    function getnazov:string;override;
+
+  public
+      function BodVTvare(p:tpoint):boolean;override;
+
+    procedure Nakreslit(ACanvas: TCanvas); override;
+  end;
+
+  TElipsa = class(TTvar)
+  private
+    function getnazov:string;override;
+  public
+   procedure Nakreslit(ACanvas: TCanvas); override;
+   function BodVTvare(p:tpoint):boolean;override;
+  end;
+
+  TTrojuholnik = class(TTvar)
+  private
+    function getnazov:string;override;
+  public
+   procedure Nakreslit(ACanvas: TCanvas); override;
+   function BodVTvare(p:tpoint):boolean;override;
+  end;
+
+  TKriz = class(TTvar)
+  private
+    function getnazov:string;override;
+  public
+   procedure Nakreslit(ACanvas: TCanvas); override;
+   function BodVTvare(p:tpoint):boolean;override;
+  end;
+
+  tSipka = class(TTvar)
+  private
+    function getnazov:string;override;
+  public
+   procedure Nakreslit(ACanvas: TCanvas); override;
+   function BodVTvare(p:tpoint):boolean;override;
+  end;
+
+  TZoznamTvarov = class(TObject)
+  private
+   fList: TList;
+  public
+
+    constructor Create;
+    destructor Destroy; override;
+    function GetTvar(AIndex: Integer): TTvar;
+    procedure OdstranitTvar(AIndex: Integer);
+    function PridatTvar(ADruhTvaru: TDruhTvaru): TTvar;
+    procedure NakresliTvary(ACanvas: TCanvas);
+    procedure ZmazatVsetko;
+    procedure ulozitAll(meno:string);
+    procedure NacitatAll(meno:string);
+    property plist: TList read flist;          //tu pridat pocet tvarov ako property
+  end;                                            //aj get tvar bodu function gettvarbodu tpoint: ttvar
+
+
+  //var
+  //FList: TList;  //treba opravit , nie  globalne
+
+implementation
+
+
+constructor TTvar.Create(druh:tdruhtvaru);
+begin
+FDruhTvaru := druh;
+  FFarba := clYellow;
+  FVlavo:=100;
+  FSirka:=20;
+  FHore:=50;
+  fvyska:=20;
+  fzobrazit:=true;
+  ffarbaciary:=clBlack;
+  fhrubkaciary:=2;
+
+end;
+function ttvar.getnazov;
+begin
+  result:= 'neurceny';
+end;
+
+
+
+  procedure ttvar.ulozitdata(suborstream: tfilestream);
+begin
+
+
+  suborstream.write(FDruhTvaru,SizeOf(FDruhTvaru));
+  suborstream.write(FFarba, SizeOf(FFarba));
+  suborstream.write(FVlavo, SizeOf(FVlavo));
+  suborstream.write(FHore, SizeOf(FHore));
+  suborstream.write(FSirka, SizeOf(FSirka));
+  suborstream.write(FVyska, SizeOf(FVyska));
+  suborstream.write(FFarbaciary, SizeOf(FFarbaciary));
+  suborstream.write(FHrubkaCiary, SizeOf(FHrubkaCiary));
+  suborstream.write(fzobrazit, sizeOf(Fzobrazit));
+
+
+
+
+
+end;
+
+procedure ttvar.nacitatdata(suborstream: TFileStream);
+begin
+
+  suborstream.read(FFarba, SizeOf(FFarba));
+  suborstream.read(FVlavo, SizeOf(FVlavo));
+  suborstream.read(FHore, SizeOf(FHore));
+  suborstream.read(FSirka, SizeOf(FSirka));
+  suborstream.read(FVyska, SizeOf(FVyska));
+  suborstream.read(FFarbaciary, SizeOf(FFarbaciary));
+  suborstream.read(FHrubkaCiary, SizeOf(FHrubkaCiary));
+  suborstream.read(FZobrazit, sizeOf(FZobrazit));
+
+
+
+end;
+procedure TTvar.Nakreslit(ACanvas: TCanvas);
+begin
+
+end;
+{$Region 'obdlznik '}
+
+function tobdlznik.getnazov;
+begin
+  result:= 'obdlznik';
+  self.nazov:='obdlznik';
+end;
+procedure TObdlznik.Nakreslit(ACanvas: TCanvas);
+begin
+if FZobrazit=true then
+  begin
+    acanvas.Pen.Width:=fhrubkaciary;                              //inherited pridat
+  acanvas.Pen.Color:=ffarbaciary;
+  ACanvas.Brush.Color := FFarba;
+  ACanvas.Rectangle(FVlavo, FHore, FVlavo+Fsirka, fhore+fvyska);
+   end;
+
+end;
+
+function tobdlznik.BodVTvare(p: TPoint):boolean;             //zobrazenie pridat
+begin
+ result:= PointInPolygon(P, [Point(FVlavo, FHore), Point(FVlavo, fhore+fvyska),point(fvlavo+fsirka,fhore),Point(fvlavo+fsirka,fhore+fvyska)])
+end;
+
+
+{$EndRegion}
+
+{$Region 'trojuholnik  '}
+function ttrojuholnik.getnazov;
+begin
+  result:= 'trojuholnik';
+  self.nazov:='trojuholnik';
+end;
+
+
+procedure TTrojuholnik.Nakreslit(ACanvas: TCanvas);
+var
+P1,P2,P3:Tpoint;
+begin
+  if FZobrazit=true then
+  begin
+  P1.X:=fvlavo;
+  P1.Y:=fhore+fvyska;
+
+  P2.X:=fvlavo+fsirka;
+  P2.Y:=fhore+fvyska;
+
+  P3.X:=fvlavo+sirka div 2;
+  P3.Y:=fhore;
+  acanvas.Pen.Width:=fhrubkaciary;
+  acanvas.Pen.Color:=ffarbaciary;
+  ACanvas.Brush.Color:=FFarba;
+  ACanvas.Polygon([P1,P2,P3]);
+  end;
+end;
+
+
+
+
+
+function ttrojuholnik.BodVTvare(p: TPoint):boolean;
+var
+P1,P2,P3:Tpoint;
+begin
+
+
+  P1.X:=fvlavo;
+  P1.Y:=fhore+fvyska;
+
+  P2.X:=fvlavo+fsirka;
+  P2.Y:=fhore+fvyska;
+
+  P3.X:=fvlavo+sirka div 2;
+  P3.Y:=fhore;
+  result:= pointinpolygon(P,[P1,P2,P3]);
+
+end;
+
+
+{$EndRegion}
+
+{$Region 'Kriz  '}
+function tkriz.getnazov;
+begin
+  result:= 'kriz';
+  self.nazov:='kriz';
+end;
+
+procedure TKriz.Nakreslit(ACanvas: TCanvas);
+var
+p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12:Tpoint;
+begin
+if FZobrazit=true then
+  begin
+  p1.X:=fvlavo;
+  p1.y:=fhore+(vyska div 3);
+
+  p2.X:=fvlavo;
+  p2.y:=fhore+(vyska div 3)*2;
+
+  p3.X:=fvlavo+(fsirka div 3);
+  p3.y:=fhore+((fvyska div 3 )*2) ;
+
+  p4.X:=fvlavo+(fsirka div 3);
+  p4.y:=fhore+fvyska;
+
+  p5.X:=fvlavo+((fsirka div 3)*2);
+  p5.y:=fhore+fvyska;
+
+  p6.X:= fvlavo+(fsirka div 3)*2;
+  p6.y:=fhore+(fvyska div 3 )*2 ;
+
+  p7.X:=fvlavo+fsirka;
+  p7.y:=fhore+(fvyska div 3 )*2 ;
+
+  p8.X:=fvlavo+fsirka;
+  p8.y:=fhore+fvyska div 3;
+
+  p9.X:=fvlavo+(fsirka div 3)*2;
+  p9.y:=fhore+(vyska div 3);
+
+  p10.X:=fvlavo+(fsirka div 3)*2;
+  p10.y:=fhore;
+
+  p11.X:=fvlavo+fsirka div 3;
+  p11.y:=fhore;
+
+  p12.X:=fvlavo+fsirka div 3;
+  p12.y:=fhore+fvyska div 3;
+    acanvas.Pen.Width:=fhrubkaciary;
+  acanvas.Pen.Color:=ffarbaciary;
+  ACanvas.Brush.Color:=FFarba;
+  ACanvas.Polygon([p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12]);
+  end;
+end;
+
+ function tkriz.BodVTvare(p: TPoint):boolean;
+var
+p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12:tpoint;
+begin
+ p1.X:=fvlavo;
+  p1.y:=fhore+(vyska div 3);
+
+  p2.X:=fvlavo;
+  p2.y:=fhore+(vyska div 3)*2;
+
+  p3.X:=fvlavo+(fsirka div 3);
+  p3.y:=fhore+((fvyska div 3 )*2) ;
+
+  p4.X:=fvlavo+(fsirka div 3);
+  p4.y:=fhore+fvyska;
+
+  p5.X:=fvlavo+((fsirka div 3)*2);
+  p5.y:=fhore+fvyska;
+
+  p6.X:= fvlavo+(fsirka div 3)*2;
+  p6.y:=fhore+(fvyska div 3 )*2 ;
+
+  p7.X:=fvlavo+fsirka;
+  p7.y:=fhore+(fvyska div 3 )*2 ;
+
+  p8.X:=fvlavo+fsirka;
+  p8.y:=fhore+fvyska div 3;
+
+  p9.X:=fvlavo+(fsirka div 3)*2;
+  p9.y:=fhore+(vyska div 3);
+
+  p10.X:=fvlavo+(fsirka div 3)*2;
+  p10.y:=fhore;
+
+  p11.X:=fvlavo+fsirka div 3;
+  p11.y:=fhore;
+
+  p12.X:=fvlavo+fsirka div 3;
+  p12.y:=fhore+fvyska div 3;
+  result:=PointInPolygon(P, [P1, P2, P3, P4, P5,p6,p7,p8,p9,p10,p11,p12])
+end;
+
+
+{$EndRegion}
+
+
+{$Region 'Sipka  '}
+function tsipka.getnazov;
+begin
+  result:= 'sipka';
+  self.nazov:='sipka';
+end;
+
+procedure TSipka.Nakreslit(ACanvas: TCanvas);
+ var
+p1,p2,p3,p4,p5,p6,p7:tpoint;
+begin
+if FZobrazit=true then
+  begin
+  p1.X:=fvlavo;
+  p1.y:=fhore+fvyska div 4;                        //150=sirka
+
+  p2.X:=fvlavo;
+  p2.y:=fhore+(fvyska div 4)*3;
+
+  p3.X:=fvlavo+(fsirka div 4)*3;
+  p3.y:=fhore+(fvyska div 4)*3;
+
+  p4.X:=fvlavo+(fsirka div 4)*3;
+  p4.y:=fhore+fvyska;
+
+  p5.X:=fvlavo+fsirka;
+  p5.y:=fhore+fvyska div 2;
+
+  p6.X:=fvlavo+(fsirka div 4)*3;
+  p6.y:=fhore;
+
+  p7.X:=fvlavo+(fsirka div 4)*3;
+  p7.y:=fhore+fvyska div 4;
+    acanvas.Pen.Width:=fhrubkaciary;
+  acanvas.Pen.Color:=ffarbaciary;
+  ACanvas.Brush.Color:=FFarba;
+  ACanvas.Polygon([p1,p2,p3,p4,p5,p6,p7]);
+  end;
+end;
+
+function tsipka.BodVTvare(p: TPoint):boolean;
+var
+p1,p2,p3,p4,p5,p6,p7:tpoint;
+begin
+ p1.X:=fvlavo;
+  p1.y:=fhore+fvyska div 4;                        //150=sirka
+
+  p2.X:=fvlavo;
+  p2.y:=fhore+(fvyska div 4)*3;
+
+  p3.X:=fvlavo+(fsirka div 4)*3;
+  p3.y:=fhore+(fvyska div 4)*3;
+
+  p4.X:=fvlavo+(fsirka div 4)*3;
+  p4.y:=fhore+fvyska;
+
+  p5.X:=fvlavo+fsirka;
+  p5.y:=fhore+fvyska div 2;
+
+  p6.X:=fvlavo+(fsirka div 4)*3;
+  p6.y:=fhore;
+
+  p7.X:=fvlavo+(fsirka div 4)*3;
+  p7.y:=fhore+fvyska div 4;
+  result:=PointInPolygon(P, [p1,p2,p3,p4,p5,p6,p7])
+end;
+
+
+{$EndRegion}
+
+{$Region 'elipsa  '}
+function telipsa.getnazov;
+begin
+  result:= 'elipsa';
+  self.nazov:='elipsa';
+end;
+
+procedure TElipsa.Nakreslit(ACanvas: TCanvas);
+begin
+if FZobrazit=true then
+  begin
+  ACanvas.Brush.Color:= FFarba;
+    acanvas.Pen.Width:=fhrubkaciary;
+  acanvas.Pen.Color:=ffarbaciary;
+  ACanvas.Ellipse(vlavo,hore,vlavo+sirka,hore+vyska);
+  end;
+
+end;
+
+function telipsa.BodVTvare(p: TPoint):boolean;
+
+begin
+result:=pointinellipse(p,rect(vlavo,hore,vlavo+sirka,hore+vyska));
+end;
+
+
+{$EndRegion}
+
+
+
+
+{$Region 'TZoznamTvarov                                                       '}
+
+constructor TZoznamTvarov.Create;
+begin
+  inherited Create;
+  fList := TList.Create;
+end;
+
+destructor TZoznamTvarov.Destroy;
+begin
+  ZmazatVsetko;
+  FList.Free;
+  inherited Destroy;
+end;
+
+procedure tzoznamtvarov.ulozitAll(meno: string);
+var
+I:integer;
+suborStreamm:tfilestream;
+atvar:ttvar;
+
+begin
+  suborstreamm:=tfilestream.Create(meno,fmcreate);
+  suborstreamm.write(flist.Count, sizeof(flist.Count));
+  for I := 0 to flist.Count-1 do
+
+    begin
+      atvar:=flist.Items[I];
+      atvar.ulozitdata(suborstreamm);
+
+    end;
+    suborstreamm.Free;
+end;
+
+procedure tzoznamtvarov.NacitatAll(meno: string);
+var
+i,kolko:integer;
+suborstream:tfilestream;
+atvar:ttvar;
+fdruhtvaru:tdruhtvaru;
+begin
+suborstream:=tfilestream.Create(meno, fmOpenRead);
+suborstream.Read(kolko, sizeof(kolko));
+for I := 0 to kolko-1 do
+  begin
+    suborstream.Read(fdruhtvaru,sizeof(fdruhtvaru));
+    atvar:=pridattvar(fdruhtvaru);
+    atvar:=flist.Items[i];
+    atvar.nacitatdata(suborstream);
+  end;
+
+
+end;
+
+function TZoznamTvarov.GetTvar(AIndex: Integer): TTvar;
+begin
+ result:=flist.Items[aindex];          //podmienku pridat aindex>=0 aindex<flist.count , else result nil
+end;
+
+procedure TZoznamTvarov.OdstranitTvar(AIndex: Integer);
+begin
+
+end;
+
+function TZoznamTvarov.PridatTvar(ADruhTvaru: TDruhTvaru): TTvar;
+begin
+  case ADruhTvaru of
+    tvObdlznik:      Result := TObdlznik.Create(tvobdlznik);
+    tvElipsa:      Result := TElipsa.Create(tvElipsa);
+    tvTrojuholnik:      Result := TTrojuholnik.Create(tvTrojuholnik);
+    tvKriz:      Result := TKriz.Create(tvKriz);
+    tvSipka:      Result := TSipka.Create(tvSipka);
+
+
+  else
+    Result := nil;
+    Exit;
+  end;
+   FList.Add(Result);
+
+
+end;
+
+procedure TZoznamTvarov.NakresliTvary(ACanvas: TCanvas);
+var
+  i: Integer;
+  ATvar: TTvar;
+begin
+  for i := 0 to FList.Count - 1 do
+  begin
+    ATvar := FList.Items[i];
+
+    ATvar.Nakreslit(ACanvas);
+
+  end;
+end;
+
+procedure TZoznamTvarov.ZmazatVsetko;
+var
+i:integer;
+atvar:ttvar;
+begin
+ for I := 0 to flist.Count-1 do
+   begin
+     atvar:=flist.Items[i];
+     atvar.Free;
+   end;
+   flist.Clear;
+end;
+
+{$EndRegion}
+
+
+end.

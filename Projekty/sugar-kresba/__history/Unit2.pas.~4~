@@ -1,0 +1,34 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm2 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Vypln: TColorBox;
+    Utvar: TColorBox;
+    Lajna: TColorBox;
+    Hrubka: TComboBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    Velkost: TComboBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  v:integer;
+implementation
+
+{$R *.dfm}
+
+end.

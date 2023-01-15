@@ -1,0 +1,74 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 603
+  ClientWidth = 753
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 24
+    Top = 113
+    Width = 199
+    Height = 13
+    Caption = 'Jedno cislo vypisanie cif. suctu a zvlastne'
+  end
+  object Label2: TLabel
+    Left = 433
+    Top = 113
+    Width = 202
+    Height = 13
+    Caption = 'Vsetky cisla vypisanie cif. suctu a zvlastne'
+  end
+  object Button1: TButton
+    Left = 151
+    Top = 132
+    Width = 75
+    Height = 25
+    Caption = 'Vypis'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object SpinEdit1: TSpinEdit
+    Left = 24
+    Top = 132
+    Width = 121
+    Height = 22
+    MaxValue = 9999
+    MinValue = 1000
+    TabOrder = 1
+    Value = 1500
+  end
+  object Memo1: TMemo
+    Left = 24
+    Top = 160
+    Width = 257
+    Height = 273
+    ScrollBars = ssVertical
+    TabOrder = 2
+  end
+  object Memo2: TMemo
+    Left = 433
+    Top = 163
+    Width = 249
+    Height = 273
+    ScrollBars = ssVertical
+    TabOrder = 3
+  end
+  object Button2: TButton
+    Left = 432
+    Top = 132
+    Width = 75
+    Height = 25
+    Caption = 'Vypis'
+    TabOrder = 4
+    OnClick = Button2Click
+  end
+end

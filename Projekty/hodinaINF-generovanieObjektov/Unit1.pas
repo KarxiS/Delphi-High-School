@@ -1,0 +1,74 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Image1: TImage;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+fvstup:textfile;
+xz,yz,xk,yk,r,g,b:integer;
+tvar:string;
+begin
+ assignFile(fvstup,'vstup.txt');
+ reset(fvstup);
+ while NOT(EOF(fvstup)) do
+  begin
+  readln(fvstup,tvar);
+  read(fvstup,xz);
+  read(fvstup,yz);
+  read(fvstup,xk);
+  read(fvstup,yk);
+  readln(fvstup);
+  read(fvstup,r);
+  read(fvstup,g);
+  read(fvstup,b);
+  readln(fvstup) ;
+  case tvar[1] of
+    'R':begin
+          image1.canvas.Brush.Color:=RGB(r,g,b) ;
+          image1.canvas.rectangle(xz,yz,xk,yk);
+
+
+        end;
+    'E':begin
+           image1.canvas.Brush.Color:=RGB(r,g,b);
+           image1.canvas.Ellipse(xz,yz,xk,yk);
+
+        end;
+
+     'L':begin
+            image1.canvas.Brush.Color:=RGB(r,g,b);
+            image1.Canvas.MoveTo(xz,yz);
+            image1.Canvas.LineTo(xk,yk);
+
+          end;
+  end;
+
+
+  end;
+  CloseFile(fvstup);
+end;
+
+
+end.

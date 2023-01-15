@@ -1,0 +1,57 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Samples.Spin;
+
+type
+  TForm1 = class(TForm)
+    Edit1: TEdit;
+    Edit2: TEdit;
+    RadioGroup1: TRadioGroup;
+    GroupBox1: TGroupBox;
+    SpinEdit1: TSpinEdit;
+    SpinEdit2: TSpinEdit;
+    SpinEdit3: TSpinEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Panel1: TPanel;
+    Zapisat: TButton;
+    Zrusit: TButton;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    ComboBox1: TComboBox;
+    procedure ZapisatClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+
+
+procedure TForm1.ZapisatClick(Sender: TObject);
+begin
+case radiogroup1.itemindex of
+    0:
+    Begin
+
+    End;
+
+
+end;
+end;
+
+end.

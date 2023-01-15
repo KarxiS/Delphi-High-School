@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899/12/30 00:00:00.000.498,\\DC1\Data_studenti$\2017\C\sugark\My Documents\SPR\MarekMalaCikula\Unit1.pas=\\DC1\Data_studenti$\2017\C\sugark\My Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.039,=\\DC1\Data_studenti$\2017\C\sugark\My Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.339,G:\Môj disk\Classroom\SPR 4.A,B,C,D\marekcicinamala\Unit1.pas=G:\Môj disk\MarekMalaCikula\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.339,G:\Môj disk\Classroom\SPR 4.A,B,C,D\marekcicinamala\Unit1.dfm=G:\Môj disk\MarekMalaCikula\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.607,\\DC1\Data_studenti$\2017\C\sugark\My Documents\SPR\MarekMalaCikula\Project1.dproj=\\DC1\Data_studenti$\2017\C\sugark\My Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.498,\\DC1\Data_studenti$\2017\C\sugark\My Documents\SPR\MarekMalaCikula\Unit1.dfm=\\DC1\Data_studenti$\2017\C\sugark\My Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.851,G:\Môj disk\Classroom\SPR 4.A,B,C,D\marekcicinamala\Project1.dproj=G:\Môj disk\MarekMalaCikula\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

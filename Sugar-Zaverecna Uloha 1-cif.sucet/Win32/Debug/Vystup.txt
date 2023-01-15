@@ -1,0 +1,9 @@
+zvlastne cislo 2025
+Ciferny sucet je 20+25
+ 
+zvlastne cislo 3025
+Ciferny sucet je 30+25
+ 
+zvlastne cislo 9801
+Ciferny sucet je 98+1
+ 

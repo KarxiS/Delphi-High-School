@@ -1,0 +1,588 @@
+{$A8,B-,C+,D+,E-,F-,G+,H+,I+,J-,K-,L+,M-,N+,O+,P+,Q-,R-,S-,T-,U-,V+,W-,X+,Y+,Z1}
+{$MINSTACKSIZE $00004000}
+{$MAXSTACKSIZE $00100000}
+{$IMAGEBASE $00400000}
+{$APPTYPE GUI}
+{$WARN SYMBOL_DEPRECATED ON}
+{$WARN SYMBOL_LIBRARY ON}
+{$WARN SYMBOL_PLATFORM ON}
+{$WARN SYMBOL_EXPERIMENTAL ON}
+{$WARN UNIT_LIBRARY ON}
+{$WARN UNIT_PLATFORM ON}
+{$WARN UNIT_DEPRECATED ON}
+{$WARN UNIT_EXPERIMENTAL ON}
+{$WARN HRESULT_COMPAT ON}
+{$WARN HIDING_MEMBER ON}
+{$WARN HIDDEN_VIRTUAL ON}
+{$WARN GARBAGE ON}
+{$WARN BOUNDS_ERROR ON}
+{$WARN ZERO_NIL_COMPAT ON}
+{$WARN STRING_CONST_TRUNCED ON}
+{$WARN FOR_LOOP_VAR_VARPAR ON}
+{$WARN TYPED_CONST_VARPAR ON}
+{$WARN ASG_TO_TYPED_CONST ON}
+{$WARN CASE_LABEL_RANGE ON}
+{$WARN FOR_VARIABLE ON}
+{$WARN CONSTRUCTING_ABSTRACT ON}
+{$WARN COMPARISON_FALSE ON}
+{$WARN COMPARISON_TRUE ON}
+{$WARN COMPARING_SIGNED_UNSIGNED ON}
+{$WARN COMBINING_SIGNED_UNSIGNED ON}
+{$WARN UNSUPPORTED_CONSTRUCT ON}
+{$WARN FILE_OPEN ON}
+{$WARN FILE_OPEN_UNITSRC ON}
+{$WARN BAD_GLOBAL_SYMBOL ON}
+{$WARN DUPLICATE_CTOR_DTOR ON}
+{$WARN INVALID_DIRECTIVE ON}
+{$WARN PACKAGE_NO_LINK ON}
+{$WARN PACKAGED_THREADVAR ON}
+{$WARN IMPLICIT_IMPORT ON}
+{$WARN HPPEMIT_IGNORED ON}
+{$WARN NO_RETVAL ON}
+{$WARN USE_BEFORE_DEF ON}
+{$WARN FOR_LOOP_VAR_UNDEF ON}
+{$WARN UNIT_NAME_MISMATCH ON}
+{$WARN NO_CFG_FILE_FOUND ON}
+{$WARN IMPLICIT_VARIANTS ON}
+{$WARN UNICODE_TO_LOCALE ON}
+{$WARN LOCALE_TO_UNICODE ON}
+{$WARN IMAGEBASE_MULTIPLE ON}
+{$WARN SUSPICIOUS_TYPECAST ON}
+{$WARN PRIVATE_PROPACCESSOR ON}
+{$WARN UNSAFE_TYPE OFF}
+{$WARN UNSAFE_CODE OFF}
+{$WARN UNSAFE_CAST OFF}
+{$WARN OPTION_TRUNCATED ON}
+{$WARN WIDECHAR_REDUCED ON}
+{$WARN DUPLICATES_IGNORED ON}
+{$WARN UNIT_INIT_SEQ ON}
+{$WARN LOCAL_PINVOKE ON}
+{$WARN MESSAGE_DIRECTIVE ON}
+{$WARN TYPEINFO_IMPLICITLY_ADDED ON}
+{$WARN RLINK_WARNING ON}
+{$WARN IMPLICIT_STRING_CAST ON}
+{$WARN IMPLICIT_STRING_CAST_LOSS ON}
+{$WARN EXPLICIT_STRING_CAST OFF}
+{$WARN EXPLICIT_STRING_CAST_LOSS OFF}
+{$WARN CVT_WCHAR_TO_ACHAR ON}
+{$WARN CVT_NARROWING_STRING_LOST ON}
+{$WARN CVT_ACHAR_TO_WCHAR ON}
+{$WARN CVT_WIDENING_STRING_LOST ON}
+{$WARN NON_PORTABLE_TYPECAST ON}
+{$WARN XML_WHITESPACE_NOT_ALLOWED ON}
+{$WARN XML_UNKNOWN_ENTITY ON}
+{$WARN XML_INVALID_NAME_START ON}
+{$WARN XML_INVALID_NAME ON}
+{$WARN XML_EXPECTED_CHARACTER ON}
+{$WARN XML_CREF_NO_RESOLVE ON}
+{$WARN XML_NO_PARM ON}
+{$WARN XML_NO_MATCHING_PARM ON}
+{$WARN IMMUTABLE_STRINGS OFF}
+unit F_Aplikacia;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, CheckLst, DataTvary, vlastnosti, system.types,
+  Vcl.Samples.Spin, Vcl.Buttons, Vcl.Menus, System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.ActnMan,
+  IDETheme.ActnCtrls, Vcl.PlatformDefaultStyleActnCtrls, Vcl.ToolWin,pointin,
+  Vcl.ActnCtrls;
+
+type
+
+
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    CheckListBox1: TCheckListBox;
+    Splitter1: TSplitter;
+    Panel3: TPanel;
+    PaintBox1: TPaintBox;
+    Button1: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Button2: TButton;
+    ActionManager1: TActionManager;
+    MainMenu1: TMainMenu;
+    PopupMenu1: TPopupMenu;
+    ImageList1: TImageList;
+    Subor1: TMenuItem;
+    var1: TMenuItem;
+    Farba1: TMenuItem;
+    aaObdlznik: TAction;
+    aaElipsa: TAction;
+    aaKriz: TAction;
+    aaSipka: TAction;
+    fBiela: TAction;
+    fModra: TAction;
+    fRuzova: TAction;
+    TvarNastavenie: TAction;
+    ActionToolBar1: TActionToolBar;
+    Ulozit1: TMenuItem;
+    Load1: TMenuItem;
+    Vymazat1: TMenuItem;
+    Obdlznik1: TMenuItem;
+    Kriz1: TMenuItem;
+    Elipsa1: TMenuItem;
+    Sipka1: TMenuItem;
+    Modra1: TMenuItem;
+    Ruzova1: TMenuItem;
+    Biela1: TMenuItem;
+    Obdlznik2: TMenuItem;
+    Elipsa2: TMenuItem;
+    Kriz2: TMenuItem;
+    Sipka2: TMenuItem;
+    SaveDialog1: TSaveDialog;
+    OpenDialog1: TOpenDialog;
+    vymazat: TAction;
+    Farby: TAction;
+    Farby1: TMenuItem;
+    Modra2: TMenuItem;
+    Biela2: TMenuItem;
+    Ruzova2: TMenuItem;
+    aaTrojuholnik: TAction;
+    Button3: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure PaintBox1Paint(Sender: TObject);
+    //procedure btnObdlznikClick(Sender: TObject);
+
+   //procedure TrojuholnikClick(Sender: TObject);
+   // procedure krizClick(Sender: TObject);
+   // procedure SipkaClick(Sender: TObject);
+    procedure PaintBox1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure CheckListBox1ClickCheck(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure PaintBox1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure PaintBox1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Button2MouseEnter(Sender: TObject);
+    procedure Button2MouseLeave(Sender: TObject);
+    procedure aaObdlznikExecute(Sender: TObject);
+    procedure aaElipsaExecute(Sender: TObject);
+    procedure aaKrizExecute(Sender: TObject);
+    procedure aaSipkaExecute(Sender: TObject);
+//    procedure KtoreEditovat(Sender: TObject; Shift: TShiftState; X,
+ // Y: Integer );
+    procedure TvarNastavenieExecute(Sender: TObject);
+    procedure aaObdlznikUpdate(Sender: TObject);
+    procedure aaElipsaUpdate(Sender: TObject);
+    procedure aaKrizUpdate(Sender: TObject);
+    procedure aaSipkaUpdate(Sender: TObject);
+    procedure fModraExecute(Sender: TObject);
+    procedure fRuzovaExecute(Sender: TObject);
+    procedure fBielaExecute(Sender: TObject);
+    procedure Ulozit1Click(Sender: TObject);
+    procedure Load1Click(Sender: TObject);
+    procedure vymazatExecute(Sender: TObject);
+    procedure FarbyExecute(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure aaTrojuholnikExecute(Sender: TObject);
+    procedure aaTrojuholnikUpdate(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+  private
+    FZoznamTvarov: TZoznamTvarov;
+    fdruhtvaru:tdruhtvaru;
+    dovolmi:boolean;
+    potiahnima:boolean;
+  public
+    { Public declarations }
+
+  end;
+
+var
+  Form1: TForm1;
+  atvar:ttvar;
+  ttfarba:TColor;
+  apoloha:ttvar;
+  FZoznamTvarov: TZoznamTvarov;
+  FDruhTvaru: TDruhTvaru;
+  P1:tpoint;
+implementation
+
+{$R *.dfm}
+
+
+
+
+procedure TForm1.vymazatExecute(Sender: TObject);
+begin
+ FZoznamTvarov.ZmazatVsetko;
+  Checklistbox1.Clear;
+  Fzoznamtvarov.Create;
+  Paintbox1.Invalidate;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+  begin
+  //label2.Caption:=fzoznamtvarov.GetTvar(0).nazov;
+  form2.zapisvlastnosti2(fzoznamtvarov.GetTvar(checklistbox1.itemindex));
+  //form2.zapisvlastnosti(fzoznamtvarov.plist,checklistbox1.itemindex); //then
+  paintbox1.Invalidate;
+  end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+atvar:ttvar;
+begin
+//atvar:= fzoznamtvarov.Gettvar(checklistbox1.ItemIndex);
+//atvar.DruhTvaru:=tvTrojuholnik;
+
+label2.caption:='reset';
+paintbox1.Invalidate;
+end;
+
+procedure TForm1.Button2MouseEnter(Sender: TObject);
+begin
+//button2.
+
+end;
+
+procedure TForm1.Button2MouseLeave(Sender: TObject);
+begin
+//button2.Color:=clWhite
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+
+ if checklistbox1.ItemIndex>-1 then
+ begin
+ fzoznamtvarov.plist.Delete(checklistbox1.ItemIndex);
+ checkListBox1.Items.Delete(Checklistbox1.ItemIndex);
+
+ end;
+
+ paintbox1.Invalidate;
+end;
+
+procedure TForm1.CheckListBox1ClickCheck(Sender: TObject);
+var
+atvar:ttvar;
+  begin
+   atvar:= fzoznamtvarov.Gettvar(checklistbox1.ItemIndex);
+   atvar.Zobrazit:=checklistbox1.Checked[Checklistbox1.ItemIndex];
+   paintbox1.Invalidate;
+  end;
+
+
+
+procedure TForm1.fBielaExecute(Sender: TObject);
+begin
+ttfarba:=clWhite;
+end;
+
+procedure TForm1.fModraExecute(Sender: TObject);
+begin
+ttfarba:=clBlue;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  FZoznamTvarov := TZoznamTvarov.Create;
+  fdruhtvaru:=tvneurceny;
+  doublebuffered:=true;
+
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  FZoznamTvarov.Free;
+end;
+
+
+procedure TForm1.fRuzovaExecute(Sender: TObject);
+begin
+ ttfarba:=clFuchsia;
+end;
+
+procedure TForm1.Load1Click(Sender: TObject);
+var
+i:integer;
+begin
+  if opendialog1.execute then
+  begin
+    fzoznamtvarov.ZmazatVsetko;
+    fzoznamtvarov.Create;
+    fzoznamtvarov.NacitatAll(opendialog1.filename);
+    checklistbox1.Clear;
+    for I := 0 to fzoznamtvarov.plist.Count-1 do
+      begin
+
+      Apoloha:= FZoznamtvarov.GetTvar(i);
+      checklistbox1.Items.Add(apoloha.Nazov);
+      Checklistbox1.Checked[checklistbox1.Count-1]:=apoloha.Zobrazit;
+      Checklistbox1.ItemIndex:= checklistbox1.Count - 1;
+    end;
+    paintbox1.Invalidate;
+  end;
+end;
+
+procedure TForm1.PaintBox1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  var
+  I:integer;
+  P: TPoint;
+begin
+
+ for i := fzoznamtvarov.plist.Count-1  downto 0 do
+      begin
+       ATvar := fzoznamtvarov.plist.Items[i];
+       atvar.oznacma:=false;
+
+
+
+    end;
+
+
+  if  Button = mbLeft  then
+    begin
+    if fdruhtvaru<> tvneurceny then
+      begin
+      atvar:=fzoznamtvarov.PridatTvar(fdruhtvaru);
+      atvar.Hore:=Y;
+      atvar.Vlavo:=X;
+      atvar.Farba:=ttfarba;
+      atvar.HrubkaCiary:=3;
+      atvar.FarbaCiary:=clBlack;
+      dovolmi:=true;
+      atvar.oznacma:=true;
+     end
+       else
+      begin
+              //suradnice z mysky davame do P Tpoint , preco? neviem //ahaa , on si to potom pekne zisti v bodvtvare(tpoint mysky);
+              P.X := X;
+              P.Y := Y;
+
+
+
+
+
+              for i := fzoznamtvarov.plist.Count-1  downto 0 do
+                begin
+                   atvar.oznacma:=false;
+                ATvar := fzoznamtvarov.plist.Items[i];
+
+               //ATvar.Nakreslit(ACanvas);
+               //tu treba dat z mysky P  sur. do bodvtvare
+                  paintbox1.Invalidate;
+                if atvar.BodVTvare(p) or pointinellipse (P,rect(atvar.Vlavo+atvar.sirka-10,atvar.Hore+atvar.vyska+10,atvar.Vlavo+atvar.sirka+10,atvar.Hore+atvar.vyska-10)) then
+                begin
+                  //KLIKNI A ZISTI
+
+                  case atvar.DruhTvaru of
+
+                  tvObdlznik:      begin label2.Caption:='obdlznik';checklistbox1.itemindex:=i;end;    //uz ide , treba tiez tpointy .. ale 4
+                  tvElipsa:
+                                    begin label2.Caption:='elipsa';  checklistbox1.itemindex:=i;end;
+
+                  tvTrojuholnik:
+                                     begin   label2.Caption:='troj'; checklistbox1.itemindex:=i; end;
+                  tvKriz:
+                                     begin  label2.Caption:='kriz';  checklistbox1.itemindex:=i; end;
+                  tvSipka:
+                                     begin  label2.Caption:='sipka';  checklistbox1.itemindex:=i; end;
+
+
+                  end;
+
+
+                  atvar.oznacma:=true;
+                  if (Button = mbLeft) and pointinellipse(P,rect(atvar.Vlavo+atvar.sirka-10,atvar.Hore+atvar.vyska+10,atvar.Vlavo+atvar.sirka+10,atvar.Hore+atvar.vyska-10)) then
+                  begin
+                  dovolmi:=true;
+                  exit
+                  end;
+                  if (atvar.oznacma) and (Button = mbLeft) then potiahnima:=true;
+
+
+
+
+                  p1.X:=x-atvar.vlavo;
+                  p1.Y:=y-atvar.Hore;
+
+
+
+
+                 exit;
+
+                end;
+
+              end;
+
+
+
+      end;
+
+
+
+
+
+    end;
+
+
+
+
+
+
+  end;
+
+procedure TForm1.PaintBox1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer );
+  var
+  sirka:integer;
+  vyska:integer;
+begin
+
+if dovolmi then
+ begin
+
+
+ atvar.Sirka:=x-atvar.Vlavo;
+ atvar.Vyska:=y-atvar.Hore;
+ paintbox1.invalidate;
+
+    if (atvar.Sirka<20) and (atvar.Sirka>0)  then atvar.Sirka:=20;      //podmienky na minimalnu velkost
+   if (atvar.vyska<20) and (atvar.vyska>0) then atvar.vyska:=20;;
+   if (atvar.Sirka>-20) and (atvar.Sirka<0)  then atvar.Sirka:=-20;
+   if (atvar.vyska>-20) and (atvar.vyska<0) then atvar.vyska:=-20;;
+
+
+
+ end;
+
+
+ if potiahnima then
+ begin
+  atvar.hore:=y-p1.y;
+ atvar.vlavo:=x-p1.x;
+ paintbox1.invalidate;
+ end;
+
+
+ label1.caption:=inttostr(x)+';'+inttostr(y);
+end;
+
+procedure TForm1.PaintBox1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  var
+  I:integer;
+  begin
+
+if (fdruhtvaru<> tvneurceny) and (Button = mbLeft)  then
+      begin
+
+        checklistbox1.items.Add(atvar.Nazov);
+        checklistbox1.Checked[Checklistbox1.Count-1]:=true;
+        checklistbox1.itemindex:=checklistbox1.Count-1;
+      fdruhtvaru:=tvneurceny;
+      paintbox1.Cursor:=crDefault;
+      paintbox1.Invalidate;
+      dovolmi:=false;
+      end;
+
+  if (atvar.oznacma) and (Button = mbLeft) then dovolmi:=false;
+  if (atvar.oznacma) and (Button = mbLeft) then potiahnima:=false;
+
+end;
+
+procedure TForm1.PaintBox1Paint(Sender: TObject);
+begin
+  FZoznamTvarov.NakresliTvary(PaintBox1.Canvas);
+
+
+end;
+
+procedure TForm1.TvarNastavenieExecute(Sender: TObject);
+
+  begin
+   if checklistbox1.ItemIndex=-1 then Dialogs.MessageDlg('Nemas ziadny tvar', mtError,
+      [mbOk], 0, mbOk)
+   else
+   begin
+    if fzoznamtvarov.GetTvar(checklistbox1.itemindex).oznacma=true then
+    begin
+    form2.zapisvlastnosti2(fzoznamtvarov.GetTvar(checklistbox1.itemindex));
+    paintbox1.Invalidate;
+    end
+     else
+     Dialogs.MessageDlg('Oznac nejaky tvar v canvase', mtError,
+      [mbOk], 0, mbOk);
+
+   end;
+  end;
+
+
+procedure TForm1.Ulozit1Click(Sender: TObject);
+begin
+ if savedialog1.Execute then
+  begin
+    FZoznamTvarov.ulozitall(SaveDialog1.FileName);
+  end;
+end;
+
+procedure TForm1.aaElipsaExecute(Sender: TObject);
+begin
+fdruhtvaru:=tvElipsa;
+Paintbox1.cursor:= crCross;
+end;
+
+procedure TForm1.aaElipsaUpdate(Sender: TObject);
+begin
+ aaElipsa.Checked:= (Fdruhtvaru=tvElipsa);
+end;
+
+procedure TForm1.aaKrizExecute(Sender: TObject);
+begin
+fdruhtvaru:=tvKriz;
+Paintbox1.cursor:= crCross;
+end;
+
+procedure TForm1.aaKrizUpdate(Sender: TObject);
+begin
+ aaKriz.Checked:= (Fdruhtvaru=tvKriz);
+end;
+
+procedure TForm1.aaObdlznikExecute(Sender: TObject);
+begin
+fdruhtvaru:=tvObdlznik;
+Paintbox1.cursor:= crCross;
+end;
+
+procedure TForm1.aaObdlznikUpdate(Sender: TObject);
+begin
+  aaObdlznik.Checked:= (Fdruhtvaru=tvObdlznik);
+end;
+
+procedure TForm1.aaSipkaExecute(Sender: TObject);
+begin
+fdruhtvaru:=tvSipka;
+Paintbox1.cursor:= crCross;
+end;
+
+procedure TForm1.aaSipkaUpdate(Sender: TObject);
+begin
+aaSipka.Checked:= (Fdruhtvaru=tvSipka);
+end;
+
+procedure TForm1.aaTrojuholnikExecute(Sender: TObject);
+begin
+fdruhtvaru:=tvTrojuholnik;
+Paintbox1.cursor:= crCross;
+end;
+
+procedure TForm1.aaTrojuholnikUpdate(Sender: TObject);
+begin
+aaTrojuholnik.Checked:= (Fdruhtvaru=tvTrojuholnik);
+end;
+
+procedure TForm1.FarbyExecute(Sender: TObject);
+begin
+ fdruhtvaru:=tvTrojuholnik;
+Paintbox1.cursor:= crCross;
+end;
+
+end.

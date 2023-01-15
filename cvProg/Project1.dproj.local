@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/10/28 19:39:17.000.281,=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/28 20:20:45.000.096,=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/29 22:21:44.000.974,=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/29 22:26:57.000.471,=D:\Projektiky\Unit2.pas</Transaction>
+    <Transaction>2020/10/29 22:55:14.000.001,D:\Projektiky\Unit22.dfm=D:\Projektiky\Unit2.dfm</Transaction>
+    <Transaction>2020/10/29 22:55:14.000.001,D:\Projektiky\Unit22.pas=D:\Projektiky\Unit2.pas</Transaction>
+    <Transaction>2020/10/29 22:55:20.000.224,D:\Projektiky\Unit2.dfm=D:\Projektiky\Unit1.dfm</Transaction>
+    <Transaction>2020/10/29 22:55:20.000.224,D:\Projektiky\Unit2.pas=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/29 22:55:24.000.935,D:\Projektiky\Unit1.pas=D:\Projektiky\Unit22.pas</Transaction>
+    <Transaction>2020/10/29 22:55:24.000.935,D:\Projektiky\Unit1.dfm=D:\Projektiky\Unit22.dfm</Transaction>
+    <Transaction>2020/10/29 23:04:33.000.469,D:\Projektiky\Unit22.pas=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/29 23:04:33.000.469,D:\Projektiky\Unit22.dfm=D:\Projektiky\Unit1.dfm</Transaction>
+    <Transaction>2020/10/29 23:04:38.000.916,D:\Projektiky\Unit1.dfm=D:\Projektiky\Unit2.dfm</Transaction>
+    <Transaction>2020/10/29 23:04:38.000.916,D:\Projektiky\Unit1.pas=D:\Projektiky\Unit2.pas</Transaction>
+    <Transaction>2020/10/29 23:04:47.000.110,D:\Projektiky\Unit2.pas=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/29 23:04:47.000.110,D:\Projektiky\Unit2.dfm=D:\Projektiky\Unit1.dfm</Transaction>
+    <Transaction>2020/10/29 23:04:51.000.926,D:\Projektiky\Unit1.dfm=D:\Projektiky\Unit22.dfm</Transaction>
+    <Transaction>2020/10/29 23:04:51.000.926,D:\Projektiky\Unit1.pas=D:\Projektiky\Unit22.pas</Transaction>
+    <Transaction>2020/10/29 23:59:53.000.806,D:\Projektiky\cvprg\Unit1.dfm=D:\Projektiky\Unit1.dfm</Transaction>
+    <Transaction>2020/10/29 23:59:53.000.806,D:\Projektiky\cvprg\Unit1.pas=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/29 23:59:55.000.787,D:\Projektiky\cvprg\Unit2.pas=D:\Projektiky\Unit2.pas</Transaction>
+    <Transaction>2020/10/29 23:59:55.000.787,D:\Projektiky\cvprg\Unit2.dfm=D:\Projektiky\Unit2.dfm</Transaction>
+    <Transaction>2020/10/29 23:59:57.000.289,D:\Projektiky\cvprg\Project1.dproj=D:\Projektiky\Project1.dproj</Transaction>
+    <Transaction>2020/11/13 01:11:18.000.625,=D:\Projektiky\cvprg\Unit3.pas</Transaction>
+    <Transaction>2020/11/13 01:11:39.000.605,=D:\Projektiky\cvprg\Unit4.pas</Transaction>
+    <Transaction>2020/11/14 18:03:18.000.192,=D:\Projektiky\cvprg\Main.pas</Transaction>
+    <Transaction>2020/11/14 18:03:18.000.199,=D:\Projektiky\cvprg\Udaje.pas</Transaction>
+    <Transaction>2020/11/14 18:03:18.000.203,=D:\Projektiky\cvprg\Zapis.pas</Transaction>
+    <Transaction>2020/11/14 20:52:25.000.430,D:\Projektiky\cvprg\Project1.dproj=D:\Projektiky\cvProg\Project1.dproj</Transaction>
+    <Transaction>2020/11/14 20:52:31.000.537,D:\Projektiky\cvprg\Main.dfm=D:\Projektiky\cvProg\Main.dfm</Transaction>
+    <Transaction>2020/11/14 20:52:31.000.537,D:\Projektiky\cvprg\Main.pas=D:\Projektiky\cvProg\Main.pas</Transaction>
+    <Transaction>2020/11/14 20:52:49.000.028,D:\Projektiky\cvprg\Udaje.pas=D:\Projektiky\cvProg\Udaje.pas</Transaction>
+    <Transaction>2020/11/14 20:54:58.643,D:\Projektiky\cvProg\Zapis.pas=D:\Projektiky\cvprg\Zapis.pas</Transaction>
+    <Transaction>2020/11/14 20:54:58.643,D:\Projektiky\cvProg\Zapis.dfm=D:\Projektiky\cvprg\Zapis.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Main.pas"/>
+    <File Path="Main.dfm"/>
+    <File Path="Udaje.pas"/>
+    <File Path="Zapis.pas"/>
+    <File Path="Zapis.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

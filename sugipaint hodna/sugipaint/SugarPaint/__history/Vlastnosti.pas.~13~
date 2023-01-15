@@ -1,0 +1,76 @@
+unit Vlastnosti;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, datatvary, Vcl.ExtCtrls ;
+
+type
+  TForm2 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Edit1: TEdit;
+    Sirka: TEdit;
+    Xko: TEdit;
+    Yko: TEdit;
+    hrubkapera: TEdit;
+    Label7: TLabel;
+    Vyska: TEdit;
+    Zmena: TButton;
+    farbavypln: TColorBox;
+    Label8: TLabel;
+    Farbapero: TColorBox;
+    procedure ZmenaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function zapisvlastnosti(item:integer):boolean;
+
+  end;
+
+var
+  Form2: TForm2;
+  lol:ttvar;
+implementation
+
+{$R *.dfm}
+
+
+function tform2.zapisvlastnosti(item:integer):boolean;
+
+begin
+
+lol:=flist.Items[item];
+edit1.Text:=lol.Nazov;
+yko.Text:=inttostr(lol.hore);
+xko.Text:=inttostr(lol.Vlavo);
+sirka.Text:=inttostr(lol.Sirka);
+vyska.Text:=inttostr(lol.Vyska);
+farbapero.selected:=lol.FarbaCiary;
+farbavypln.Selected:=lol.Farba;
+hrubkapera.text:=strtoint(lol.HrubkaCiary);
+result:=ShowModal=mrOk;
+
+end;
+
+
+
+
+procedure TForm2.ZmenaClick(Sender: TObject);
+begin
+lol.Nazov:=edit1.Text;
+lol.hore:=strtoint(yko.Text);
+lol.Vlavo:=strtoint(xko.Text);
+lol.Sirka:=strtoint(sirka.Text);
+lol.Vyska:=strtoint(vyska.Text);
+lol.FarbaCiary:=farbapero.selected;
+lol.Farba:=farbavypln.Selected;
+end;
+
+end.

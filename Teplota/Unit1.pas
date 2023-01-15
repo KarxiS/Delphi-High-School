@@ -1,0 +1,62 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Memo1: TMemo;
+    SpinEdit1: TSpinEdit;
+    SpinEdit2: TSpinEdit;
+    den: TLabel;
+    tep: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  teplota: array [1..31] of integer;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+
+Teplota[spinedit1.value]:= spinedit2.value ;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+T,x:integer;
+B:real;
+
+begin
+x:=0;
+memo1.text:='Vypisujem teploty v mesiaci ktory ma 31 dni';
+for T := 1 to 31 do
+
+ begin
+  memo1.Lines.Add(InttoStr(T)+'.    '+InttoStr(Teplota[T]));
+  x:=x+Teplota[T];
+  B:=B+Teplota[T]
+ end;
+
+
+   memo1.Lines.Add('Priemer zadanych hodnot je : '+FloatToStr((Round(B/31*100))/100));
+
+end;
+
+end.

@@ -1,0 +1,18 @@
+program GrafickeTvary;
+
+uses
+  Forms,
+  F_Aplikacia in 'F_Aplikacia.pas' {Form1},
+  DataTvary in 'DataTvary.pas',
+  Vlastnosti in 'Vlastnosti.pas' {Form2},
+  IDETheme in 'IDETheme.ActnCtrls' {Form3};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm3, Form3);
+  Application.Run;
+end.

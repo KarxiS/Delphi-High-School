@@ -1,0 +1,95 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin,math;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    SpinEdit1: TSpinEdit;
+    Memo1: TMemo;
+    Memo2: TMemo;
+    Button2: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure zvlastnecislo(cislo:integer);
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+I:integer;
+cislo:string;
+cislokus:string;
+scitanec:integer;
+begin
+cislo:=inttostr(spinedit1.Value);
+scitanec:= 0;
+zvlastnecislo(spinedit1.Value);
+
+for I := 1 to 4 do
+    begin
+
+    scitanec:=scitanec+strtoint(cislo[i]);
+    end;
+    memo1.Lines.Add('Ciferny sucet '+inttostr(scitanec));
+    //memo1.lines.savetofile('vystup_jedneho_cisla.txt');
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+txt:textfile;
+i,cislo:integer;
+
+begin
+for I := 1000 to 9999 do
+  begin
+   zvlastnecislo(i);
+  end;
+end;
+
+procedure tform1.zvlastnecislo(cislo: Integer);
+var
+c1,c2:integer;
+cisloStr:string;
+txt:textfile;
+
+begin
+cislostr:=inttostr(cislo);
+
+
+
+    c1:=strtoint(cislostr[1]+cislostr[2]);
+    c2:=strtoint(cislostr[3]+cislostr[4]);
+
+
+    if sqr(c1+c2)=cislo then
+    begin
+     memo2.Lines.Add('cislo '+cislostr+' je zvlastne s ich cifernym suctom '+inttostr(c1)+' '+inttostr(c2));
+    AssignFile(Txt, 'VystupCisel.txt');
+    reset(txt);
+    Rewrite(Txt);
+    WriteLn(Txt, cislostr);
+
+    end;
+    CloseFile(Txt);
+        end;
+
+
+
+end.

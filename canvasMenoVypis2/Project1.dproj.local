@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/10/04 13:10:28.000.457,=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/10/04 16:59:02.000.920,D:\Projektiky\Unit1.pas=D:\Projektiky\Sugar-du1\Unit1.pas</Transaction>
+    <Transaction>2020/10/04 16:59:02.000.920,D:\Projektiky\Unit1.dfm=D:\Projektiky\Sugar-du1\Unit1.dfm</Transaction>
+    <Transaction>2020/10/04 16:59:08.000.831,D:\Projektiky\Project1.dproj=D:\Projektiky\Sugar-du1\Project1.dproj</Transaction>
+    <Transaction>2020/10/04 17:01:36.176,D:\Projektiky\Nový priečinok\Project1.dproj=D:\Projektiky\Sugar-du1\Project1.dproj</Transaction>
+    <Transaction>2020/10/04 17:10:12.043,D:\Projektiky\Nový priečinok (2)\Unit1.dfm=D:\Projektiky\Sugar-du1\Unit1.dfm</Transaction>
+    <Transaction>2020/10/04 17:10:12.043,D:\Projektiky\Nový priečinok (2)\Unit1.pas=D:\Projektiky\Sugar-du1\Unit1.pas</Transaction>
+    <Transaction>2020/10/04 17:10:36.723,D:\Projektiky\Nový priečinok (2)\Project1.dproj=D:\Projektiky\Nový priečinok\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,157 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+const
+  MaxPocet = 100;
+
+type
+  TTrieda = (tr1a, tr1b, tr1c, tr2a, tr2b, tr2c, tr3a, tr3b, tr3c, tr4a, tr4b, tr4c, tr4d);
+  TPohlavie = (phMuz, phZena);
+  TNarodnost = (nrSlo, nrCes, nrMad, nrPol, nrRus, nrRom, nrUkr, nrIna);
+
+  TDatum = record
+    Den: Byte;
+    Mesiac: Byte;
+    Rok: Integer;
+  end;
+
+  TOsoba = record
+    Meno: String;
+    Priezvisko: String;
+    DatumNarodenia: TDatum;
+    Pohlavie: TPohlavie;
+    Narodnost: TNarodnost;
+    Trieda: TTrieda;
+    
+
+  end;
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Edit1: TEdit;
+    Label1: TLabel;
+    Edit2: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
+    ComboBox4: TComboBox;
+    Label5: TLabel;
+    ComboBox5: TComboBox;
+    Label6: TLabel;
+    ComboBox6: TComboBox;
+    Memo1: TMemo;
+    Button2: TButton;
+    Label7: TLabel;
+    Label8: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+  ZoznamZiakov: array[1..MaxPocet] of TOsoba;
+  Osoba: TOsoba;
+  pocetZiakov: Integer = 0;
+
+
+implementation
+
+function NarToStr(nar: TNarodnost):String;
+begin
+  case nar of
+    nrSlo: result:= 'Slovenská';
+    nrCes: result:= 'Èeská';
+    nrMad: result:= 'Maïarská';
+    nrPol: result:= 'Po¾ská';
+    nrRus: result:= 'Rusínská';
+    nrRom: result:= 'Rómska';
+    nrUkr: result:= 'Ukrajinská';
+    nrIna: result:= 'Iná';
+  end;
+end;
+
+function TriedaToStr(trieda: TTrieda):String;
+begin
+  case trieda of
+    tr1a: result:= '1.A';
+    tr1b: result:= '1.B';
+    tr1c: result:= '1.C';
+    tr2a: result:= '2.A';
+    tr2b: result:= '2.B';
+    tr2c: result:= '2.C';
+    tr3a: result:= '3.A';
+    tr3b: result:= '3.B';
+    tr3c: result:= '3.C';
+    tr4a: result:= '4.A';
+    tr4b: result:= '4.B';
+    tr4c: result:= '4.C';
+    tr4d: result:= '4.D';
+
+
+  end;
+end;
+
+function PohlavieToStr(pohlavie: TPohlavie):String;
+begin
+  case pohlavie of
+    phMuz: result:= 'Muž';
+    phZena: result:= 'Žena';
+  end;
+end;
+
+
+{$R *.dfm}
+procedure VpisanieZiaka;
+begin
+  pocetZiakov:=pocetZiakov+1;
+  with ZoznamZiakov[pocetZiakov] do
+  begin
+    Meno := Form1.Edit1.Text;
+    Priezvisko := Form1.Edit2.Text;
+    Narodnost := TNarodnost(Form1.ComboBox5.ItemIndex);
+    Trieda := TTrieda(Form1.ComboBox6.ItemIndex);
+    Pohlavie := TPohlavie(Form1.ComboBox4.ItemIndex);
+    with DatumNarodenia do
+      begin
+      Den := (Form1.ComboBox1.ItemIndex);
+      Mesiac := (Form1.ComboBox2.ItemIndex);
+      Rok := (Form1.ComboBox3.ItemIndex);
+      end;
+  end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+VpisanieZiaka;
+Label8.Caption:=IntToStr(pocetZiakov);
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+I,cisloZiaka: Integer;
+begin
+Memo1.Lines.Clear;
+cisloZiaka:= 1;
+for I := 1 to pocetZiakov do
+begin
+  with Memo1.Lines, zoznamZiakov[cisloZiaka], DatumNarodenia do
+    Add(Meno+' '+Priezvisko+', '+PohlavieToStr(Pohlavie)+', '+IntToStr(1+Den)+'.'+IntToStr(1+Mesiac)+'.'+IntToStr(Rok+1930)+', '+NarToStr(Narodnost)+' nár., '+TriedaToStr(Trieda));
+cisloZiaka:=cisloZiaka+1;
+
+end;
+end;
+
+end.

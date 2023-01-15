@@ -1,0 +1,67 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Label1: TLabel;
+    Memo1: TMemo;
+    procedure Button1Click(Sender: TObject);
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure test;
+  end;
+
+  Type
+  TNarodnost=(nSlovenska,NCeska,NAmericka,nUkrajinska,nIna);
+  TPohlavie=(pMuz,pZena);
+  TMeno=record
+    Meno:string;
+    Priezvisko:string;
+  end;
+  TDatum=record
+    Den:byte;
+    Mesiac:byte;
+    Rok:word;
+  end;
+  TOsoba=record
+    Meno: TMeno;
+    DatumNarodenia:TDatum;
+    Pohlavie:Tpohlavie;
+    Narodnost:TNarodnost;
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+test
+end;
+
+procedure tform2.test;
+var
+idk:byte;
+begin
+idk:=10;
+  TDatum.den:=20;
+  Tdatum.mesiac:=12;
+  TDatum.rok:=152;
+  memo1.Lines.Add(InttoStr(idk));
+end;
+end.

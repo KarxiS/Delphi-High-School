@@ -1,0 +1,127 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Zapis Osoby'
+  ClientHeight = 556
+  ClientWidth = 413
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Edit1: TEdit
+    Left = 56
+    Top = 144
+    Width = 121
+    Height = 21
+    TabOrder = 0
+    Text = 'Edit1'
+  end
+  object Edit2: TEdit
+    Left = 216
+    Top = 144
+    Width = 121
+    Height = 21
+    TabOrder = 1
+    Text = 'Edit2'
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 56
+    Top = 216
+    Width = 281
+    Height = 49
+    Caption = 'RadioGroup1'
+    Columns = 2
+    Items.Strings = (
+      'Muz '
+      'Zena')
+    TabOrder = 2
+  end
+  object GroupBox1: TGroupBox
+    Left = 56
+    Top = 320
+    Width = 281
+    Height = 153
+    Caption = 'GroupBox1'
+    TabOrder = 3
+    object Label1: TLabel
+      Left = 6
+      Top = 53
+      Width = 19
+      Height = 13
+      Caption = 'Den'
+    end
+    object Label2: TLabel
+      Left = 58
+      Top = 53
+      Width = 32
+      Height = 13
+      Caption = 'Mesiac'
+    end
+    object Label3: TLabel
+      Left = 143
+      Top = 53
+      Width = 18
+      Height = 13
+      Caption = 'Rok'
+    end
+    object SpinEdit1: TSpinEdit
+      Left = 6
+      Top = 72
+      Width = 46
+      Height = 22
+      MaxValue = 31
+      MinValue = 0
+      TabOrder = 0
+      Value = 0
+    end
+    object SpinEdit2: TSpinEdit
+      Left = 58
+      Top = 72
+      Width = 63
+      Height = 22
+      MaxValue = 12
+      MinValue = 0
+      TabOrder = 1
+      Value = 0
+    end
+    object SpinEdit3: TSpinEdit
+      Left = 143
+      Top = 72
+      Width = 98
+      Height = 22
+      MaxValue = 10000
+      MinValue = 0
+      TabOrder = 2
+      Value = 0
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 512
+    Width = 417
+    Height = 41
+    Caption = 'Panel1'
+    TabOrder = 4
+    object Zapisat: TButton
+      Left = 241
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Zapisat'
+      TabOrder = 0
+    end
+    object Zrusit: TButton
+      Left = 322
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Zrusit'
+      TabOrder = 1
+    end
+  end
+end

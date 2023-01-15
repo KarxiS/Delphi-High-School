@@ -1,0 +1,135 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Kreslenie: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    Button1: TButton;
+    Image1: TImage;
+    Panel1: TPanel;
+    RadioGroup1: TRadioGroup;
+    PaintBox1: TPaintBox;
+    Button2: TButton;
+    procedure kreslitobdlznik(acanvas:tcanvas);
+    procedure kreslitstvorec(acanvas:tcanvas);
+    procedure kreslitelipsu(acanvas:tcanvas);
+    procedure Button1Click(Sender: TObject);
+    procedure PaintBox1Paint(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  x:integer=20;
+
+implementation
+uses unit2;
+{$R *.dfm}
+
+
+procedure tform1.kreslitobdlznik(acanvas: TCanvas);
+begin
+with form2,form1 do
+begin
+acanvas.brush.Color:=vypln.selected;
+acanvas.Rectangle(-1,-1,width+10,height+10);
+acanvas.Pen.Color:=lajna.selected;
+acanvas.pen.Width:=strtoint(hrubka.Text);
+acanvas.Brush.Color:=utvar.Selected;
+acanvas.Rectangle(image1.width div 2-2*x,image1.height div 2-x,image1.width div 2+2*x,image1.height div 2+x);
+end;
+end;
+
+procedure tform1.kreslitstvorec(acanvas: TCanvas);
+begin
+with form2,form1,canvas do
+begin
+acanvas.brush.Color:=vypln.selected;
+acanvas.Rectangle(-1,-1,width+10,height+10);
+acanvas.Pen.Color:=lajna.selected;
+acanvas.pen.Width:=strtoint(hrubka.Text);
+acanvas.Brush.Color:=utvar.Selected;
+acanvas.Rectangle(image1.width div 2-x,image1.height div 2-x,image1.width div 2+x,image1.height div 2+x);
+end;
+end;
+
+procedure TForm1.PaintBox1Paint(Sender: TObject);
+begin
+case radiogroup1.ItemIndex of
+  0: kreslitstvorec(paintbox1.Canvas);
+  1: kreslitobdlznik(paintbox1.Canvas);
+  2: kreslitelipsu(paintbox1.Canvas);
+  end;
+end;
+
+
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+if form2.ShowModal=mrOK then
+  begin
+  button1.Click;
+  with form2 do
+   begin
+    MessageDlg('Generator nastaveny', mtConfirmation,
+     [mbOK],0);
+   end;
+  end;
+
+
+end;
+
+procedure tform1.kreslitelipsu(acanvas: TCanvas);
+begin
+with form2,form1 do
+begin
+
+
+acanvas.brush.Color:=vypln.selected;
+
+acanvas.rectangle(-1,-1,width+10,height+10);
+acanvas.Pen.Color:=lajna.selected;;
+acanvas.pen.Width:=strtoint(hrubka.Text);
+acanvas.Brush.Color:=utvar.Selected;
+acanvas.ellipse(image1.width div 2-x,image1.height div 2-x,image1.width div 2+x,image1.height div 2+x);
+end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+acanvas:tcanvas;
+begin
+  case form2.Velkost.ItemIndex of
+  0:x:=20;
+  1:x:=50;
+  2:x:=90;
+  end;
+
+
+  case kreslenie.activepageindex of
+  0: acanvas:=image1.Canvas;
+  1: acanvas:=paintbox1.Canvas;
+  end;
+
+
+
+  case radiogroup1.ItemIndex of
+  0: kreslitstvorec(acanvas);
+  1: kreslitobdlznik(acanvas);
+  2: kreslitelipsu(acanvas);
+  end;
+
+
+ end;
+end.

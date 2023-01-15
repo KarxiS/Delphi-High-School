@@ -1,0 +1,128 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 200
+  ClientWidth = 393
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 56
+    Top = 21
+    Width = 63
+    Height = 13
+    Caption = 'Farba vyplne'
+  end
+  object Label2: TLabel
+    Left = 56
+    Top = 67
+    Width = 63
+    Height = 13
+    Caption = 'Farba utvaru'
+  end
+  object Label3: TLabel
+    Left = 56
+    Top = 113
+    Width = 57
+    Height = 13
+    Caption = 'Farba Lajny'
+  end
+  object Label4: TLabel
+    Left = 224
+    Top = 20
+    Width = 59
+    Height = 13
+    Caption = 'Hrubka pera'
+  end
+  object Label5: TLabel
+    Left = 224
+    Top = 66
+    Width = 70
+    Height = 13
+    Caption = 'Velkost Utvaru'
+  end
+  object Vypln: TColorBox
+    Left = 56
+    Top = 40
+    Width = 145
+    Height = 22
+    DefaultColorColor = clBlue
+    Selected = clYellow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Utvar: TColorBox
+    Left = 56
+    Top = 86
+    Width = 145
+    Height = 22
+    DefaultColorColor = clYellow
+    Selected = clMaroon
+    TabOrder = 1
+  end
+  object Lajna: TColorBox
+    Left = 56
+    Top = 132
+    Width = 145
+    Height = 22
+    Selected = clNavy
+    TabOrder = 2
+  end
+  object Hrubka: TComboBox
+    Left = 224
+    Top = 39
+    Width = 145
+    Height = 21
+    ItemIndex = 0
+    TabOrder = 3
+    Text = '8'
+    Items.Strings = (
+      '8'
+      '7'
+      '6'
+      '2'
+      '1')
+  end
+  object Velkost: TComboBox
+    Left = 224
+    Top = 85
+    Width = 145
+    Height = 21
+    TabOrder = 4
+    Text = 'Stredna'
+    Items.Strings = (
+      'Mala'
+      'Stredna'
+      'Velka')
+  end
+  object Button1: TButton
+    Left = 248
+    Top = 130
+    Width = 75
+    Height = 25
+    Caption = 'Ok'
+    ModalResult = 1
+    TabOrder = 5
+  end
+  object Button2: TButton
+    Left = 248
+    Top = 161
+    Width = 75
+    Height = 25
+    Caption = 'Zrusit'
+    ModalResult = 2
+    TabOrder = 6
+  end
+end

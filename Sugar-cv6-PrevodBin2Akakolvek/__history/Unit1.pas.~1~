@@ -1,0 +1,80 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Memo1: TMemo;
+    SpinEdit1: TSpinEdit;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  function dec2bin(cislo:integer):string;
+  function dec2hex(cislo:integer):string;
+  end;
+
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+function tform1.dec2bin(cislo: Integer):string;
+var
+zvysok:integer;
+bincislo:string;
+
+  begin
+    bincislo:='';
+    while cislo>0 do
+     begin
+      zvysok:=cislo mod 2 ;
+      if zvysok=0 then bincislo:='0'+bincislo
+                  else bincislo:='1'+bincislo;
+                  cislo:=cislo div 2;
+     end;
+     result:=bincislo;
+     end;
+
+function tform1.dec2hex(cislo: Integer):string;
+var
+zvysok:integer;
+bincislo:string;
+
+  begin
+    bincislo:='';
+    while cislo>0 do
+     begin
+      zvysok:=cislo mod 16 ;
+      case zvysok of
+      0..9:bincislo:=Inttostr(zvysok)+bincislo;
+      10:bincislo:='A'+bincislo;
+      11:bincislo:='B'+bincislo;
+      12:bincislo:='C'+bincislo;
+      13:bincislo:='D'+bincislo;
+      14:bincislo:='E'+bincislo;
+      15:bincislo:='F'+bincislo;
+
+
+      end;
+      cislo:=cislo div 16;
+     end;
+     result:=bincislo;
+     end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+ memo1.Lines.Add(dec2bin(spinedit1.value));
+ memo1.Lines.Add(dec2hex(spinedit1.value));
+end;
+
+end.

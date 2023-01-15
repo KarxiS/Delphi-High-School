@@ -1,0 +1,91 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Memo1: TMemo;
+    Button1: TButton;
+    Edit1: TEdit;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations}
+    function palindrom(a:string):boolean;
+    procedure prvocislo(a:integer);
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure tform1.prvocislo(a: Integer);
+var
+i:integer;
+begin
+  for I := 2 to a-1 do
+    begin
+       if  a mod I=0  then memo1.Lines.Add(inttostr(I));
+
+
+
+
+
+
+
+    end;
+
+end;
+
+function tform1.palindrom(a: string):boolean;
+var
+  vymena:char;
+  cislo:string;
+  i:integer;
+
+begin
+
+    cislo:=A;
+    for I := 1 to length(a) div 2 do
+    begin
+
+
+      vymena:=a[I];
+      a[I]:=a[length(a)-i+1];
+      a[length(a)-i+1]:=vymena;
+      memo1.Lines.Add('Otocene cislo') ;
+      memo1.Lines.Add(a);
+       if cislo=a then result:=True
+                  else result:=False;
+
+
+    end;
+
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+cislo:integer ;
+I:integer;
+
+begin
+ //prvocislo check
+ prvocislo(strtoint(edit1.Text));
+
+//palindrom cislo
+ if palindrom(edit1.text) then memo1.lines.add('Palindrom je ')
+                  else memo1.lines.add('Palindrom nie je');
+
+ end;
+
+
+
+end.

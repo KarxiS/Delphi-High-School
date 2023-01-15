@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/12/02 18:21:42.000.974,=D:\Projektiky\Unit1.pas</Transaction>
+    <Transaction>2020/12/02 23:02:29.000.488,=D:\Projektiky\Unit2.pas</Transaction>
+    <Transaction>2020/12/02 23:02:37.000.150,=D:\Projektiky\Unit2.pas</Transaction>
+    <Transaction>2020/12/02 23:02:46.000.267,=D:\Projektiky\Unit2.pas</Transaction>
+    <Transaction>2020/12/02 23:45:25.000.253,D:\Projektiky\Unit2.pas=D:\Projektiky\objektSugar\Unit2.pas</Transaction>
+    <Transaction>2020/12/02 23:45:26.000.519,D:\Projektiky\Unit1.pas=D:\Projektiky\objektSugar\Unit1.pas</Transaction>
+    <Transaction>2020/12/02 23:45:26.000.519,D:\Projektiky\Unit1.dfm=D:\Projektiky\objektSugar\Unit1.dfm</Transaction>
+    <Transaction>2020/12/02 23:45:27.000.543,D:\Projektiky\Project1.dproj=D:\Projektiky\objektSugar\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
